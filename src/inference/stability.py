@@ -47,3 +47,13 @@ def send_generation_request(
 
     return response
 
+
+
+def save_images(generated,output_image):
+    with open(generated, "wb") as f:
+        f.write(output_image)
+    print(f"Saved image {generated}")
+
+def display_images(generated):
+    print("Result image:")
+    IPython.display.display(Image.open(generated))
