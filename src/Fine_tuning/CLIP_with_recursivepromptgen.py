@@ -8,13 +8,24 @@ from IPython.display import clear_output, display
 from PIL import Image
 from tqdm import tqdm
 from torch.utils.data import DataLoader, Dataset
+from torchvision import transforms
+
+clip_transform = transforms.Compose([
+    transforms.Resize((224, 224)),  # Resize to CLIP's input size
+    transforms.ToTensor(),          # Convert to tensor
+    transforms.Normalize(           # Normalize to match CLIP
+        mean=[0.5, 0.5, 0.5],
+        std=[0.5, 0.5, 0.5]
+    )
+])
 
 class ImageDataset(Dataset):
     """
     Dataset for loading images from a directory recursively.
     """
-    def __init__(self, root_dir, image_extensions={'.jpg', '.jpeg', '.png'}):
+    def __init__(self, root_dir, transform, image_extensions={'.jpg', '.jpeg', '.png'}):
         self.image_paths = []
+        self.transform = transform
         for root, _, files in os.walk(root_dir):
             for file in files:
                 if os.path.splitext(file)[1].lower() in image_extensions:
@@ -26,6 +37,8 @@ class ImageDataset(Dataset):
     def __getitem__(self, idx):
         img_path = self.image_paths[idx]
         img = Image.open(img_path).convert("RGB")
+        if self.transform:
+            img = self.transform(img)
         return img, img_path
 
 
@@ -160,7 +173,7 @@ def generate_prompt_batch(folder_path, prompt_mode, output_mode, max_filename_le
         None
     """
     # Initialize dataset and dataloader
-    dataset = ImageDataset(folder_path)
+    dataset = ImageDataset(folder_path, transform = clip_transform)
     dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=False)
 
     prompts = []
@@ -174,12 +187,14 @@ def generate_prompt_batch(folder_path, prompt_mode, output_mode, max_filename_le
         batch_prompts = []
 
         # Generate prompts for each image in the batch
-        for img, path in zip(images, paths):
-            prompt = image_to_prompt(img, prompt_mode)
+        for img_tensor, path in zip(images, paths):
+            img_pil = transforms.ToPILImage()(img_tensor).convert("RGB")
+
+            prompt = image_to_prompt(img_pil, prompt_mode)
             batch_prompts.append((path, prompt))
 
             # Display a thumbnail of the image
-            thumb = img.copy()
+            thumb = img_pil.copy()
             thumb.thumbnail([256, 256])
             display(thumb)
 
