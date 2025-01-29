@@ -19,6 +19,21 @@ clip_transform = transforms.Compose([
     )
 ])
 
+reverse_transform = transforms.Normalize(
+    mean=[-0.5 / 0.5, -0.5 / 0.5, -0.5 / 0.5],
+    std=[1 / 0.5, 1 / 0.5, 1 / 0.5]
+)
+
+def unnormalize(tensor):
+    """
+    Reverses the normalization applied to a tensor.
+    Args:
+        tensor (torch.Tensor): Normalized image tensor.
+    Returns:
+        torch.Tensor: Unnormalized image tensor.
+    """
+    return reverse_transform(tensor)
+
 class ImageDataset(Dataset):
     """
     Dataset for loading images from a directory recursively.
@@ -188,7 +203,8 @@ def generate_prompt_batch(folder_path, prompt_mode, output_mode, max_filename_le
 
         # Generate prompts for each image in the batch
         for img_tensor, path in zip(images, paths):
-            img_pil = transforms.ToPILImage()(img_tensor).convert("RGB")
+            unnormalized_img = unnormalize(img_tensor)
+            img_pil = transforms.ToPILImage()(unnormalized_img).convert("RGB")
 
             prompt = image_to_prompt(img_pil, prompt_mode)
             batch_prompts.append((path, prompt))
