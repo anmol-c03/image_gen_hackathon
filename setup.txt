@@ -1,0 +1,13 @@
+This setup is necessary for run_model.py (final inference script)
+
+By running the run_model.py, one can generate 5 different images given a single images.
+The main thing to consider is that how to generate csv files. 
+Each image is divided into their corresponding theme and then LLMs analyzes the carpet and give the rationale, 
+based on which it gives suggestions on using ip adpater or  T2I for further generations.
+
+To run model.py , first you have to download requirements files
+pip install -r requirements.txt
+
+and then just run the run_model.py with
+
+python3 run_model.py
