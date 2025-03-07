@@ -1,3 +1,0 @@
-This folder should include the model architecture, real and generated images and any images realted to this 
-project.
- 
