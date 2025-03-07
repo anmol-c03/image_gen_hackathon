@@ -8,8 +8,8 @@ We sucessfully generated 5 different images for 100 images ( total of 500 images
 
 <p align="center">
   <img src="https://github.com/anmol-c03/image_gen_hackathon/blob/main/images/Latent_pixel_space_FiT.png" width="45%" alt="latent+pixel space FiT Pipeline">
-  
-  <img src="https://github.com/anmol-c03/image_gen_hackathon/blob/main/images/inference_pipelines/run_model_final_pipeline.png" width="45%" alt="multi adapter pipeline Pipeline"?
+
+  <img src="https://github.com/anmol-c03/image_gen_hackathon/blob/main/images/inference_pipelines/run_model_final_pipeline.png" width="45%" alt="multi adapter pipeline Pipeline">
 </p>
 
 
