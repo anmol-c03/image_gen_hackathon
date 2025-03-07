@@ -1,4 +1,8 @@
 #ok
+
+'''
+This is the .py script for LoRA fine tuning of sdxl-base-1.0. 
+'''
 from pathlib import Path
 import os
 import torch
@@ -34,8 +38,8 @@ class TrainingConfig:
     lr: float = 1e-4
     max_grad_norm: float = 1.0
     snr_gamma: float = 5.0
-    CSV_PATH = '/kaggle/input/carpets/Carpets/desc.csv'
-    BASE_IMAGE_DIR = '/kaggle/input/carpets/Carpets'
+    CSV_PATH = 'path/to/your/image->prompt/dataset(csv preferred)'
+    BASE_IMAGE_DIR = 'path/to/your/base_folder_of_images'
     output_dir: str = "output"
     resolution: int = 512
     
