@@ -7,9 +7,6 @@ We sucessfully generated 5 different images for 100 images ( total of 500 images
 1. Fine Tuning Pipeline:
 ![FiT Pipeline](https://github.com/anmol-c03/image_gen_hackathon/blob/main/images/Latent_pixel_space_FiT.png)
 
-2. Inference Pipeline:
-![Inference Pipeline](https://github.com/anmol-c03/image_gen_hackathon/blob/main/images/inference_pipelines/run_model_final_pipeline.png)
-
 <!-- <p align="center">
   <img src="https://github.com/anmol-c03/image_gen_hackathon/blob/main/images/Latent_pixel_space_FiT.png" width="48%" alt="latent+pixel space FiT Pipeline">
 
@@ -19,6 +16,14 @@ We sucessfully generated 5 different images for 100 images ( total of 500 images
 
 # Results
 
+
+<p align="center">
+  <img src="https://github.com/anmol-c03/image_gen_hackathon/blob/main/images/results/output_74a.png" width="19%" alt="First Image">
+  <img src="https://github.com/anmol-c03/image_gen_hackathon/blob/main/images/results/output_74b.png" width="19%" alt="Second Image">
+  <img src="https://github.com/anmol-c03/image_gen_hackathon/blob/main/images/results/output_74c.png" width="19%" alt="Third Image">
+  <img src="https://github.com/anmol-c03/image_gen_hackathon/blob/main/images/results/output_74d.png" width="19%" alt="Fourth Image">
+  <img src="https://github.com/anmol-c03/image_gen_hackathon/blob/main/images/results/output_74e.png" width="19%" alt="Fifth Image">
+</p>
 
 <p align="center">
   <img src="https://github.com/anmol-c03/image_gen_hackathon/blob/main/images/results/output_74a.png" width="19%" alt="First Image">

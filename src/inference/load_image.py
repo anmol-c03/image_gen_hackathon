@@ -2,7 +2,7 @@ from diffusers.utils import load_image, make_image_grid
 from controlnet_aux.canny import CannyDetector
 
 # place url or path to image in local machine if available
-url="https://designcompetition.explorug.online/images/Artworks/8/135.png"
+url="/path/to/your/image"
 
 image = load_image(url)
 
