@@ -15,7 +15,7 @@ We sucessfully generated 5 different images for 100 images ( total of 500 images
 
 
 # Results
-
+These are the results obtained from run_model.py.
 
 <p align="center">
   <img src="https://github.com/anmol-c03/image_gen_hackathon/blob/main/images/results/output_74/output_74a.png" width="19%" alt="First Image">
